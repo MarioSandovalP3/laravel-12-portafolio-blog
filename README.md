@@ -79,7 +79,7 @@ Aplicación web que combina un portafolio profesional con un sistema de blog com
 
 1. Clonar el repositorio:
 ```bash
-git https://github.com/MarioSandovalP3/laravel-12-portafolio-blog.git
+git clone https://github.com/MarioSandovalP3/laravel-12-portafolio-blog.git
 cd laravel-12-portafolio-blog
 ```
 
