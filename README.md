@@ -17,6 +17,10 @@ Aplicación web que combina un portafolio profesional con un sistema de blog com
 - **WorkExperience**: Experiencia laboral
 - **Skill**: Habilidades técnicas y profesionales
 - **SocialNetwork**: Redes sociales y contactos
+- **Post**: Artículos del blog con contenido y estado de publicación
+- **PostCategory**: Categorías para organización temática
+- **PostTag**: Etiquetas para clasificación detallada
+- **PostComment**: Sistema de comentarios
 
 ## Secciones del Sitio
 
