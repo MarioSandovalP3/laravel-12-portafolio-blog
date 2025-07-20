@@ -46,8 +46,8 @@
                             onclick="window.location='{{ url('blog/post/' . $post->slug) }}'">
                             <div class="blog-card ">
                                 <div class="card__header d-flex justify-content-center">
-                                    <img src="{{ asset('storage/posts/thumbnails/' . $post->thumbnails) }}"
-                                        alt="{{ $post->thumbnails }}" class="card__image img-fluid" />
+                                    <img data-src="{{ asset('storage/posts/thumbnails/' . $post->thumbnails) }}"
+                                        alt="{{ $post->thumbnails }}" class="card__image img-fluid lazy" />
                                 </div>
                                 <div class="card__body">
                                     <span class="tag tag-blue text-capitalize">
@@ -68,8 +68,8 @@
                                 </div>
                                 <div class="card__footer">
                                     <div class="user">
-                                        <img src="{{ asset('storage/' . $post->user->imagen) }}" alt="user__image"
-                                            class="user__image">
+                                        <img data-src="{{ asset('storage/' . $post->user->imagen) }}" alt="user__image"
+                                            class="user__image lazy">
                                         <div class="user__info">
                                             <h5>{{ $post->user->name }}</h5>
                                             <small>{{ $post->created_at->diffForHumans() }}</small>

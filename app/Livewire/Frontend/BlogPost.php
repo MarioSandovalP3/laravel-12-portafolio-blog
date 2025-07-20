@@ -42,7 +42,7 @@ class BlogPost extends Component
             // Verificar si ya se ha registrado la vista (usando una cookie o IP)
             if (!session()->has('viewed_post_' . $post->id)) {
                 // Incrementar el contador de vistas
-                $post->increment('views_count');
+                $post->incrementViews();
                 
                 // Marcar que el post ha sido visto en esta sesión
                 session(['viewed_post_' . $post->id => true]);

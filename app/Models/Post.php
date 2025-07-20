@@ -48,4 +48,12 @@ class Post extends Model
             return 'noimg.png';
 
     }
+
+    public function incrementViews()
+    {
+        $this->views_count++;
+        $this->save();
+    }
 }
+
+

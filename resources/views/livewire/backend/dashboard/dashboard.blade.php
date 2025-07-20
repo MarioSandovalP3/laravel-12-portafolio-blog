@@ -37,8 +37,18 @@
                         <div class="col-md-3">
                             <div class="card border-0 bg-warning text-white shadow">
                                 <div class="card-body text-center py-4">
+                                    <i class="bi bi-eye" style="font-size: 2rem; color: white;"></i>
                                     <h3 class="mb-1">{{ $viewsCount }}</h3>
-                                    <p class="mb-0 font-weight-light">Visitas</p>
+                                    <p class="mb-0 font-weight-light text-white">Visitas</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="card border-0 bg-danger text-white shadow">
+                                <div class="card-body text-center py-4">
+                                    <i class="bi bi-heart-fill" style="font-size: 2rem; color: white;"></i>
+                                    <h3 class="mb-1">{{ $likesCount }}</h3>
+                                    <p class="mb-0 font-weight-light text-white">Me gusta</p>
                                 </div>
                             </div>
                         </div>

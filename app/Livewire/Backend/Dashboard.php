@@ -13,6 +13,7 @@ class Dashboard extends Component
     public $recentPostsCount;
     public $commentsCount;
     public $viewsCount;
+    public $likesCount;
     public $projectsCount;
     public $skillsCount;
     
@@ -27,10 +28,15 @@ class Dashboard extends Component
         $this->postsCount = Post::count();
         $this->recentPostsCount = Post::where('created_at', '>', now()->subDays(30))->count();
         $this->commentsCount = PostComment::count();
+        
     }
 
     protected function loadBlogStats()
     {
+        // Totales
+        $this->viewsCount = Post::sum('views_count');
+        $this->likesCount = Post::sum('likes_count');
+        
         // Datos para gráficos
         $this->prepareChartData();
     }
@@ -73,6 +79,7 @@ class Dashboard extends Component
             'postsCount' => $this->postsCount,
             'commentsCount' => $this->commentsCount,
             'viewsCount' => $this->viewsCount,
+            'likesCount' => $this->likesCount,
             'projectsCount' => $this->projectsCount,
             'skillsCount' => $this->skillsCount,
             'dates' => $this->dates ?? [],

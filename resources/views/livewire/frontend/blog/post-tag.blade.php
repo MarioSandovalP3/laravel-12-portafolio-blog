@@ -48,8 +48,8 @@
                             class="blog-card col-12 col-sm-6 col-md-4 col-lg-4 col-xl-4 d-flex justify-content-center flex-column m-2"
                             style="cursor: pointer;" onclick="window.location='{{ url('blog/post/' . $post->slug) }}'">
                             <div class="card__header d-flex justify-content-center">
-                                <img src="{{ asset('storage/posts/thumbnails/' . $post->thumbnails) }}"
-                                    alt="{{ $post->thumbnails }}" class="card__image img-fluid" />
+                                <img data-src="{{ asset('storage/posts/thumbnails/' . $post->thumbnails) }}"
+                                    alt="{{ $post->thumbnails }}" class="card__image img-fluid lazy" />
                             </div>
                             <div class="card__body">
                                 <span class="tag tag-blue text-capitalize">
@@ -70,8 +70,8 @@
                             </div>
                             <div class="card__footer">
                                 <div class="user">
-                                    <img src="{{ asset('storage/' . $post->user->imagen) }}" alt="user__image"
-                                        class="user__image">
+                                    <img data-src="{{ asset('storage/' . $post->user->imagen) }}" alt="user__image"
+                                        class="user__image lazy">
                                     <div class="user__info">
                                         <h5>{{ $post->user->name }}</h5>
                                         <small>{{ $post->created_at->diffForHumans() }}</small>

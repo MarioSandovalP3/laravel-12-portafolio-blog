@@ -16,7 +16,7 @@
             <h2>Mi Perfil</h2>
             <div class="profile">
                 <div class="profile-img">
-                    <img src="{{ asset('storage/' .$user->imagen)}}" alt="{{$user->name ?? 'Mi Sitio Web'}}">
+                    <img data-src="{{ asset('storage/' .$user->imagen)}}" alt="{{$user->name ?? 'Mi Sitio Web'}}" class="lazy">
                 </div>
                 <div class="profile-text">
                     <h3>¡Hola! Soy {{$user->name}}</h3>
