@@ -1,6 +1,6 @@
 <!-- Navbar -->
 <nav id="navbar" class="navbar-default">
-    <a href="{{ url('/') }}" class="logo"><img src="{{ asset('storage/' .$user->imagen)}}" alt="Imagen" width="50" class="rounded"> {{$user->name ?? 'Mi Sitio Web'}}</a>
+    <a href="{{ url('/') }}" class="logo"><img data-src="{{ asset('storage/' .$user->imagen)}}" alt="Imagen" width="50" class="rounded lazy"> {{$user->name ?? 'Mi Sitio Web'}}</a>
     
     <!-- Botón hamburguesa para móvil -->
     <div class="menu-toggle" id="mobile-menu">
