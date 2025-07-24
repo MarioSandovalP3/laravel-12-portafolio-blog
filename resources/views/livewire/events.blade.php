@@ -1,6 +1,10 @@
 
 <script>
     document.addEventListener('livewire:init', () => {
+
+    window.Livewire.on('clear-imagen', () => {
+        limpiarImagen();
+    });
     
     window.Livewire.on('show-modal', () => {
         $('#theModal').modal('show');

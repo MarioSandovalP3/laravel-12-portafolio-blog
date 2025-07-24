@@ -181,16 +181,17 @@
                             </svg>
                         </a>
                     </div>
-                    @foreach ($user->Skill as $skill)
+                    @foreach($user->Skill as $skill)
                     @php
                     $colorClass = '';
                     $randomColors = ['bg-custom-1', 'bg-custom-2', 'bg-custom-3', 'bg-custom-4', 'bg-custom-5', 'bg-custom-6', 'bg-custom-7', 'bg-custom-8', 'bg-custom-9', 'bg-custom-10']; // Colores aleatorios
                     // Selecciona un color aleatorio para cada habilidad
                     $colorClass = $randomColors[array_rand($randomColors)];
                     @endphp
+                    <p>{{$skill->ability}}</p>
                     <div class="progress br-30">
-                        <div class="progress-bar {{$colorClass}}" style="width: {{$skill->percentage}}%" role="progressbar"  aria-valuenow="{{$skill->percentage}}" aria-valuemin="0" aria-valuemax="100">
-                            <div class="progress-title"><span>{{ $skill->name }}</span> <span>{{ $skill->percentage }}%</span> </div>
+                        <div class="progress-bar {{$colorClass}}" style="width: {{$skill->level}}%" role="progressbar"  aria-valuenow="{{$skill->level}}" aria-valuemin="0" aria-valuemax="100">
+                            <div class="progress-title"><span>{{ $skill->level }}%</span> </div>
                         </div>
                     </div>
                     @endforeach

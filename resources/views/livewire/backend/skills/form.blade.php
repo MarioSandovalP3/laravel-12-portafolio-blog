@@ -12,11 +12,11 @@
                         <div class="col-12 col-md-8">
                             <div class="form-group">
                                 <label class="text-dark">Categoría <i class="text-danger">*</i> @error('category') <span class="text-danger er">{{$message}}</span>@enderror</label>
-                                <input type="text" wire:model='category' class="form-control">
+                                <input type="text" wire:model='category' class="form-control" placeholder="Ejemplo: Diseño Gráfico">
                             </div>
                             <div class="form-group">
                                 <label class="text-dark">Habilidad <i class="text-danger">*</i> @error('ability') <span class="text-danger er">{{$message}}</span>@enderror</label>
-                                <input type="text" wire:model='ability' class="form-control">
+                                <input type="text" wire:model='ability' class="form-control" placeholder="Ejemplo: Adobe Photoshop">
                             </div>
                             <div class="row">
                                 <div class="col-12 col-md-12">
@@ -39,7 +39,7 @@
                                 <label class="filelabel" style="width:210px!important;height:210px!important">
                                 <i class="fa fa-paperclip"></i>
                                 <span class="title" id="miSpan">Agregar una imagen <i class="text-danger">*</i> </span>
-                                <input class="FileUpload1" id="FileInput" wire:model.lazy="image" name="image" type="file" accept="image/x-png, image/gif, image/jpeg, image/webp"  />
+                                <input class="FileUpload1" id="FileInput" wire:model.lazy="image" name="image" type="file" accept="image/*"  />
                                 <img class="preview preview-skill" src=" " alt=" " id="miImagen"/>                             
                                 </label>				
                             </div>

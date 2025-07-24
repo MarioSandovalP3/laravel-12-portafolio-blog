@@ -163,8 +163,8 @@ class Skills extends Component
                 // Lee y escala la imagen a un ancho de 350px.
                 $image = Image::read($this->image)->scale(width: 350);
 
-                // Convierte la imagen a formato WebP con una calidad de 65 y la guarda en la ruta especificada.
-                $image->toWebp(65)
+                // Convierte la imagen a formato WebP con una calidad de 100 y la guarda en la ruta especificada.
+                $image->toWebp(100)
                     ->save(public_path('storage/users/skills/' . $customFileName . '.webp'));
 
                 // Actualiza el campo de imagen en la base de datos con el nuevo nombre de archivo.
@@ -247,8 +247,8 @@ class Skills extends Component
                 // Lee y escala la imagen a un ancho de 350px.
                 $image = Image::read($this->image)->scale(width: 350);
 
-                // Convierte la imagen a formato WebP con una calidad de 65 y la guarda en la ruta especificada.
-                $image->toWebp(65)
+                // Convierte la imagen a formato WebP con una calidad de 100 y la guarda en la ruta especificada.
+                $image->toWebp(100)
                     ->save(public_path('storage/users/skills/' . $customFileName . '.webp'));
 
                 // Actualiza el campo de imagen en la base de datos con el nuevo nombre de archivo.
@@ -359,7 +359,8 @@ class Skills extends Component
             'selected_id',
             'image',
         ]);
-        
+        $this->dispatch('clear-imagen');
+        $this->dispatch('clearPreviews');
         $this->resetValidation();
     }
 

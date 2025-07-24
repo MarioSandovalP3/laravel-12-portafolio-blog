@@ -180,10 +180,10 @@ class Profiles extends Component
                 if ($this->image != $user->image) {
                     // Genera un nombre único para la imagen combinando el slug con un identificador único.
                     $customFileName = $slug . '-' . uniqid();
-                    // Lee la imagen y la escala a un ancho de 350px.
-                    $image = Image::read($this->image)->scale(width: 350);
+                    // Lee la imagen y la escala a un ancho de 500px.
+                    $image = Image::read($this->image)->scale(width: 500);
                     // Convierte la imagen a formato WebP con una calidad de 65 y la guarda en la ruta especificada.
-                    $image->toWebp(65)
+                    $image->toWebp(100)
                         ->save(public_path('storage/users/profile/' . $customFileName . '.webp'));
                     // Guarda el nombre de la nueva imagen en el campo 'image' de la base de datos.
                     $oldImage = $user->image;

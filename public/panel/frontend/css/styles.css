@@ -458,6 +458,7 @@ h2:after {
 	background: var(--gradient-main);
 	color: white;
 	text-align: center;
+	height: 175px;
 }
 
 .exp-header h3 {
@@ -1468,3 +1469,107 @@ footer {
         .comment-form-actions.active {
             display: flex;
         }
+
+
+/************ Progressbar color *******/
+.bg-custom-1 {
+    background: linear-gradient(135deg, #FF4500 0%, #FF6347 100%) !important;
+    /* Vibrant Orange-Red gradient */
+}
+
+.bg-custom-2 {
+    background: linear-gradient(135deg, #1E90FF 0%, #4682B4 100%) !important;
+    /* Bright Steel Blue gradient */
+}
+
+.bg-custom-3 {
+    background: linear-gradient(135deg, #7CFC00 0%, #5a7009 100%) !important;
+    /* Vibrant Olive Drab gradient */
+}
+
+.bg-custom-4 {
+    background: linear-gradient(135deg, #DA70D6 0%, #800080 100%) !important;
+    /* Electric Purple gradient */
+}
+
+.bg-custom-5 {
+    background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%) !important;
+    /* Golden Orange gradient */
+}
+
+.bg-custom-6 {
+    background: linear-gradient(135deg, #4169E1 0%, #4a4ce0 100%) !important;
+    /* Intense Royal Blue gradient */
+}
+
+.bg-custom-7 {
+    background: linear-gradient(135deg, #FF1493 0%, #f10b91 100%) !important;
+    /* Neon Pink gradient */
+}
+
+.bg-custom-8 {
+    background: linear-gradient(135deg, #32CD32 0%, #0c6d19 100%) !important;
+    /* Lush Green gradient */
+}
+
+.bg-custom-9 {
+    background: linear-gradient(135deg, #E6E6FA 0%, #b28ae6 100%) !important;
+    /* Soft Lavender gradient */
+}
+
+.bg-custom-10 {
+    background: linear-gradient(135deg, #FF0000 0%, #f00808 100%) !important;
+    /* Fiery Crimson gradient */
+}
+
+.bg-custom-11 {  
+    background: linear-gradient(135deg, #FF00FF 0%, #9400D3 100%) !important;  
+    /* Neon Magenta-Purple */  
+}  
+
+.bg-custom-12 {  
+    background: linear-gradient(135deg, #00FFFF 0%, #008B8B 100%) !important;  
+    /* Electric Cyan-Teal */  
+}  
+
+.bg-custom-13 {  
+    background: linear-gradient(135deg, #FFD700 0%, #FF8C00 100%) !important;  
+    /* Sun Gold-Orange */  
+}  
+
+.bg-custom-14 {  
+    background: linear-gradient(135deg, #FF69B4 0%, #C71585 100%) !important;  
+    /* Hot Pink-Rose */  
+}  
+
+.bg-custom-15 {  
+    background: linear-gradient(135deg, #7FFF00 0%, #228B22 100%) !important;  
+    /* Acid Green-Forest */  
+}  
+
+.bg-custom-16 {  
+    background: linear-gradient(135deg, #40E0D0 0%, #20B2AA 100%) !important;  
+    /* Turquoise-Sea */  
+}  
+
+.bg-custom-17 {  
+    background: linear-gradient(135deg, #FF4500 0%, #FF0000 100%) !important;  
+    /* Lava Red-Orange */  
+}  
+
+.bg-custom-18 {  
+    background: linear-gradient(135deg, #9370DB 0%, #4B0082 100%) !important;  
+    /* Soft Purple-Indigo */  
+}  
+
+.bg-custom-19 {  
+    background: linear-gradient(135deg, #F0E68C 0%, #DAA520 100%) !important;  
+    /* Light Gold-Khaki */  
+}  
+
+.bg-custom-20 {  
+    background: linear-gradient(135deg, #00FF7F 0%, #006400 100%) !important;  
+    /* Mint Green-Dark Green */  
+}  
+
+/************End***********************/
