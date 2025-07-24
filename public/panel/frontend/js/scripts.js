@@ -1,7 +1,7 @@
 // Registrar el plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function () {      
     function lazyLoad() {
 
         var lazyImages = document.querySelectorAll('img[data-src]');

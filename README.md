@@ -89,13 +89,24 @@ composer install
 npm install
 ```
 
-3. Configurar entorno:
+3. Compilar y optimizar los archivos frontend (JavaScript, CSS, etc.) usando Vite:
+```bash
+npm run build
+```
+
+4. Para que las imágenes y archivos subidos sean accesibles públicamente, ejecuta:
+```bash
+php artisan storage:link
+```
+Esto creará un enlace simbólico desde `public/storage` a `storage/app/public`.
+
+5. Configurar entorno:
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-4. Configurar base de datos en `.env`:
+6. Configurar base de datos en `.env`:
 ```ini
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
@@ -105,17 +116,12 @@ DB_USERNAME=usuario
 DB_PASSWORD=contraseña
 ```
 
-5. Migrar y poblar base de datos:
+7. Migrar y poblar base de datos:
 ```bash
 php artisan migrate --seed
 ```
 
-6. Compilar assets:
-```bash
-npm run build
-```
-
-7. Iniciar servidor de desarrollo:
+8. Iniciar servidor de desarrollo:
 ```bash
 php artisan serve
 ```
@@ -127,15 +133,6 @@ Para acceder al panel de administración, utiliza las siguientes credenciales:
 - **URL**: `http://127.0.0.1:8000/login`
 - **Usuario**: `admin@email.com`
 - **Contraseña**: `admin123`
-
-## Configuración del Storage Link
-
-Para que las imágenes y archivos subidos sean accesibles públicamente, ejecuta:
-```bash
-php artisan storage:link
-```
-
-Esto creará un enlace simbólico desde `public/storage` a `storage/app/public`.
 
 ## Configuración para Producción
 
@@ -287,3 +284,9 @@ GitHub (gratis) → Genera interés → Conversión a clientes de servicios pago
 ## Licencia
 
 Este proyecto está licenciado bajo la [Licencia MIT](https://opensource.org/licenses/MIT).
+
+## ☕ Apóyame
+
+Si este proyecto te fue útil, puedes apoyarme con una donación:
+
+[💖 Donar por PayPal](https://paypal.me/linkvems?country.x=VE&locale.x=es_XC)

@@ -6,24 +6,41 @@ use App\Models\PostTag;
 use Livewire\Component;
 use App\Models\User;
 use App\Models\PostCategory;
-
+use App\Models\PostComment;
 
 class BlogPost extends Component
 {
     public int $postId;
+    public $parentId = null;
     #[Session(key: 'liked-post-{postId}')]
     public bool $liked = false;
     public $slug;
     public $tags = []; // Tags seleccionados
     public $tags_all = [];
     public $post_instan;
+    public $comments = [];
+    public $replyContent = '';
+    public $commentContent = '';
+    public $commentName = '';
+    public $commentEmail = '';
+    public $showComments = false;
+    public bool $showNameFields = false;
+    public bool $showButtons = false;
+    public bool $showReplyComments = false;
+    public $openComments = [];
+    public $selectedCommentId = null;
+    public int $textareaReplyRows = 1;
+    public int $textareaRows = 1;
+    public int $page = 1;
+    public int $perPage = 5;
+    public bool $hasMoreComments = false;
     public function mount($slug)
     {
         $this->slug = $slug;
-        $this->tags = []; 
+        $this->tags = [];
         $post = Post::where('slug', $slug)->firstOrFail();
         $this->postId = $post->id;
-        
+        $this->loadComments();
     }
 
     public function render()
@@ -74,6 +91,191 @@ class BlogPost extends Component
         }
     }
 
+    public function toggleComments($commentId)
+    {
+        if (in_array($commentId, $this->openComments)) {
+            // Si ya está abierto, cerrarlo
+            $this->openComments = array_diff($this->openComments, [$commentId]);
+        } else {
+            // Si está cerrado, abrirlo
+            $this->openComments[] = $commentId;
+        }
+    }
+
+    public function showForm()
+    {
+        if (!auth()->check()) {
+            $this->showNameFields = true;
+            $this->showButtons = true;
+            $this->textareaRows = 3;
+        }else{
+            $this->showButtons = true;
+            $this->textareaRows = 3;
+        }
+
+        
+    }
+
+    public function cancelComment()
+    {
+        $this->reset(['commentName', 'commentEmail', 'commentContent']);
+        $this->showNameFields = false;
+        $this->showButtons = false;
+        $this->textareaRows = 1;
+    }
+
+    public function loadComments()
+    {
+        $query = PostComment::with(['user', 'replies.user', 'replies.reactions'])
+            ->where('post_id', $this->postId)
+            ->whereNull('parent_id')
+            ->where('status', 'Aprobado')
+            ->orderBy('created_at', 'desc');
+
+        $this->comments = $query->paginate($this->perPage, ['*'], 'page', $this->page)->items();
+        $this->hasMoreComments = $query->count() > ($this->page * $this->perPage);
+    }
+
+    public function loadMoreComments()
+    {
+        $this->page++;
+        $this->loadComments();
+    }
+
+    public function submitComment()
+    {
+        
+        if (!auth()->check()) {
+            $rules = [
+                'commentContent' => 'required|min:3|max:1000',
+                'commentName' => 'required|min:3|max:250',
+                'commentEmail' => 'required|email|max:250'
+            ];
+
+            $messages = [
+                'commentContent.required' => 'Requerido',
+                'commentContent.min' => 'Minimo 3',
+                'commentContent.max' => 'Maximo 1000',
+                
+                'commentName.required' => 'Requerido',
+                'commentName.min' => 'Minimo 3',
+                'commentName.max' => 'Maximo 250',
+
+                'commentEmail.required' => 'Requerido',
+                'commentEmail.min' => 'Minimo 3',
+                'commentEmail.max' => 'Maximo 250',
+            ];
+        }else{
+            $rules = [
+            'commentContent' => 'required|min:3|max:1000',
+            ];
+
+            $messages = [
+                'commentContent.required' => 'Requerido',
+                'commentContent.min' => 'Minimo 3',
+                'commentContent.max' => 'Maximo 1000',
+            ];
+        }
+        
+        $this->validate($rules, $messages);
+
+
+        PostComment::create([
+            'post_id' => $this->postId,
+            'parent_id' => $this->parentId,
+            'content' => $this->commentContent,
+            'user_id' => auth()->id(),
+            'name' => auth()->check() ? null : $this->name,
+            'email' => auth()->check() ? null : $this->email,
+            'status' => auth()->check() ? 'Aprobado' : 'Pendiente'
+        ]);
+       
+        $this->commentContent = '';
+        $this->page = 1; // Resetear a primera página
+        $this->loadComments();
+    }
+
+    public function showReplyComment($commentId)
+        {
+            
+            if (!auth()->check()) {
+                $this->dispatch('notify', 'Debes iniciar sesión para responder. 📝');
+                return;
+            }
+           
+            $this->parentId = $commentId;
+            $this->showReplyComments = true;
+            $this->textareaReplyRows = 3;
+            $this->selectedCommentId = $commentId;
+             
+        }
+
+
+    public function cancelReplyComment()
+    {
+        $this->reset(['replyContent']);
+        $this->parentId = null;
+        $this->showReplyComments = false;
+        $this->textareaReplyRows = 1;
+    }
+
+    public function submitReply()
+    {
+        try {
+            $validated = $this->validate([
+                'replyContent' => 'required|min:3|max:1000'
+            ]);
+
+            $newReply = PostComment::create([
+                'post_id' => $this->postId,
+                'user_id' => auth()->id(),
+                'parent_id' => $this->parentId,
+                'content' => $validated['replyContent'],
+                'status' => auth()->check() ? 'Aprobado' : 'Pendiente'
+            ]);
+
+            if (!$newReply) {
+                throw new \Exception('Error al guardar la respuesta');
+            }
+
+            
+
+            
+            // Forzar recarga completa para garantizar reactividad
+            $this->loadComments();
+            $this->reset(['parentId', 'replyContent']);
+            $this->showReplyComments = false;
+            
+
+        } catch (\Exception $e) {
+            $this->dispatch('notify', $e->getMessage());
+        }
+    }
+
+    public function likeComment($commentId)
+    {
+        if (!auth()->check()) {
+            $this->dispatch('notify', 'Debes iniciar sesión para dar Me gusta (👍)');
+            return;
+        }
+        
+        $comment = PostComment::find($commentId);
+        $comment->like(auth()->user());
+        $this->loadComments();
+    }
+
+    public function dislikeComment($commentId)
+    {
+        if (!auth()->check()) {
+            $this->dispatch('notify','Debes iniciar sesión para dar No me gusta (👎)');
+            return;
+        }
+
+        $comment = PostComment::find($commentId);
+        $comment->dislike(auth()->user());
+        $this->loadComments();
+    }
+
     public function like()
     {
         if (! $this->liked) {
@@ -94,7 +296,6 @@ class BlogPost extends Component
 
         return round($value, $precision) . $units[$power];
     }
-
 
 }
 

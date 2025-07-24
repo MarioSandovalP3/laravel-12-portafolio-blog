@@ -92,4 +92,10 @@ class Dashboard extends Component
         ->extends('layouts.backend.app')
         ->section('content');
     }
+
+    public function logout()
+    {
+        auth()->logout();
+        return redirect()->route('login');
+    }
 }

@@ -162,6 +162,50 @@
        
         $("#new-checkbox").load(location.href + " #new-checkbox>*", "");
     });
+
+    window.Livewire.on('reply-added', ({replyId, success}) => {
+        if (success) {
+            Swal.fire({
+                title: 'Respuesta agregada',
+                showClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeInUp
+                    animate__faster
+                    `
+                },
+                hideClass: {
+                    popup: `
+                    animate__animated
+                    animate__fadeOutDown
+                    animate__faster
+                    `
+                }
+            });
+        }
+    });
+
+    window.Livewire.on('notify', (message) => {
+       Swal.fire({
+        title: message,
+        showClass: {
+            popup: `
+            animate__animated
+            animate__fadeInUp
+            animate__faster
+            `
+        },
+        hideClass: {
+            popup: `
+            animate__animated
+            animate__fadeOutDown
+            animate__faster
+            `
+        }
+        });
+    });
+
+    
     
 });
 </script>
