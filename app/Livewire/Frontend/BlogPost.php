@@ -185,12 +185,18 @@ class BlogPost extends Component
             'parent_id' => $this->parentId,
             'content' => $this->commentContent,
             'user_id' => auth()->id(),
-            'name' => auth()->check() ? null : $this->name,
-            'email' => auth()->check() ? null : $this->email,
+            'name' => auth()->check() ? null : $this->commentName,
+            'email' => auth()->check() ? null : $this->commentEmail,
             'status' => auth()->check() ? 'Aprobado' : 'Pendiente'
         ]);
-       
+        
+
         $this->commentContent = '';
+        $this->reset(['commentName', 'commentEmail', 'commentContent']);
+        $this->showNameFields = false;
+        $this->showButtons = false;
+        $this->textareaRows = 1;
+        
         $this->page = 1; // Resetear a primera página
         $this->loadComments();
     }

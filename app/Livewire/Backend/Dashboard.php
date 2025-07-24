@@ -12,6 +12,7 @@ class Dashboard extends Component
     public $postsCount;
     public $recentPostsCount;
     public $commentsCount;
+    public $recentCommentsCount;
     public $viewsCount;
     public $likesCount;
     public $projectsCount;
@@ -28,6 +29,7 @@ class Dashboard extends Component
         $this->postsCount = Post::count();
         $this->recentPostsCount = Post::where('created_at', '>', now()->subDays(30))->count();
         $this->commentsCount = PostComment::count();
+        $this->recentCommentsCount = PostComment::where('created_at', '>', now()->subWeek())->count();
         
     }
 
@@ -78,6 +80,7 @@ class Dashboard extends Component
         return view('livewire.backend.dashboard.dashboard', [
             'postsCount' => $this->postsCount,
             'commentsCount' => $this->commentsCount,
+            'recentCommentsCount' => $this->recentCommentsCount,
             'viewsCount' => $this->viewsCount,
             'likesCount' => $this->likesCount,
             'projectsCount' => $this->projectsCount,
