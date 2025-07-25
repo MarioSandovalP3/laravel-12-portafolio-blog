@@ -117,7 +117,7 @@
             
             <div class="social-links">
                 @foreach($user->SocialNetwork as $socialNetwork)
-                    <a href="{{$socialNetwork->url}}{{$socialNetwork->username}}" class="social-link {{strtolower($socialNetwork->name)}}">
+                    <a href="{{$socialNetwork->url}}" class="social-link {{strtolower($socialNetwork->name)}}">
                         <div class="social-icon">
                             <i class="fa-brands fa-{{strtolower($socialNetwork->name)}}"></i>
                         </div>

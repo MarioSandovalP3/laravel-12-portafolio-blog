@@ -307,6 +307,56 @@ Este código CSS personaliza un control de entrada (input) y selectores de formu
 	color: #fff;
 }
 
+.redes .behance:hover,
+.redes .behance:hover .tooltip,
+.redes .behance:hover .tooltip::before {
+	background: #1769ff;
+	color: #fff;
+}
+
+.redes .dribbble:hover,
+.redes .dribbble:hover .tooltip,
+.redes .dribbble:hover .tooltip::before {
+	background: #ea4c89;
+	color: #fff;
+}
+
+.redes .deviantart:hover,
+.redes .deviantart:hover .tooltip,
+.redes .deviantart:hover .tooltip::before {
+	background: #05cc47;
+	color: #fff;
+}
+
+.redes .artstation:hover,
+.redes .artstation:hover .tooltip,
+.redes .artstation:hover .tooltip::before {
+	background: #13aff0;
+	color: #fff;
+}
+
+.redes .kofi:hover,
+.redes .kofi:hover .tooltip,
+.redes .kofi:hover .tooltip::before {
+	background: #29abe0;
+	color: #fff;
+}
+
+.redes .tiktok:hover,
+.redes .tiktok:hover .tooltip,
+.redes .tiktok:hover .tooltip::before {
+	background: #010101;
+	color: #fff;
+}
+
+.redes .threads:hover,
+.redes .threads:hover .tooltip,
+.redes .threads:hover .tooltip::before {
+	background: #000000;
+	color: #fff;
+}
+
+
 /************end redes ***************/
 
 /************ Progressbar color *******/

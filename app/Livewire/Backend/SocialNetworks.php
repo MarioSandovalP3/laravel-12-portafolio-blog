@@ -75,16 +75,29 @@ class SocialNetworks extends Component
         $this->componentName = 'Redes Sociales';
         $this->name = 'Seleccione';
         $this->options = [
-        'X-Twitter'   => 'https://x.com/',
-        'Facebook'  => 'https://facebook.com/',
-        'Linkedin'  => 'https://linkedin.com/in/',
-        'Instagram' => 'https://instagram.com/',
-        'Telegram'  => 'https://t.me/',
-        'Pinterest' => 'https://pinterest.com/',
-        'GitHub'    => 'https://github.com/',
-        'YouTube'   => 'https://youtube.com/c/',
-        'Reddit'    => 'https://reddit.com/user/',
+            'X-Twitter'   => 'https://x.com/',
+            'Facebook'    => 'https://facebook.com/',
+            'Linkedin'    => 'https://linkedin.com/in/',
+            'Instagram'   => 'https://instagram.com/',
+            'Telegram'    => 'https://t.me/',
+            'Pinterest'   => 'https://pinterest.com/',
+            'GitHub'      => 'https://github.com/',
+            'YouTube'     => 'https://youtube.com/c/',
+            'Reddit'      => 'https://reddit.com/user/',
+            'Behance'     => 'https://www.behance.net/',
+            'Dribbble'    => 'https://dribbble.com/',
+            'DeviantArt'  => 'https://www.deviantart.com/',
+            'ArtStation'  => 'https://www.artstation.com/',
+            'Ko-fi'       => 'https://ko-fi.com/',
+            'TikTok'      => 'https://www.tiktok.com/@',
+            'Threads'     => 'https://www.threads.net/@',
+            'Snapchat'    => 'https://www.snapchat.com/add/',
+            'Medium'      => 'https://medium.com/@',
+            'Slack'       => 'https://join.slack.com/',
+            'Vimeo'       => 'https://vimeo.com/',
+            'Discord'     => 'https://discord.com/users/',
         ];
+
         $this->lastItem = 0;
         $this->totalRecord = 0;    
     }   

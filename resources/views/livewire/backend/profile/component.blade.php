@@ -48,48 +48,13 @@
                                 
                             </ul>
                             <div class="redes p-0 m-1">
-                                @foreach($user->SocialNetwork as $red)                        
-                                @if($red->name == 'Facebook')
-                                <a class="icon facebook" href="https://wwww.facebook.com/{{$red->username}}" target="_BLANK" aria-label="Facebook">               
-                                <span class="tooltip">Facebook</span>
-                                <span><i class="fab fa-facebook-f"></i></span>
+                                @foreach($user->SocialNetwork as $socialNetwork)                       
+                               
+                                <a class="icon {{strtolower($socialNetwork->name)}}" href="{{$socialNetwork->url}}" target="_BLANK" aria-label="{{strtolower($socialNetwork->name)}}">               
+                                <span class="tooltip">{{$socialNetwork->name}}</span>
+                                <span><i class="bi bi-{{strtolower($socialNetwork->name)}}"></i></span>
                                 </a>
-                                @endif @if($red->name == 'Twitter')
-                                <a class="icon twitter" href="https://www.twitter.com/{{$red->username}}" target="_BLANK" aria-label="X">
-                                <span class="tooltip">Twitter</span>
-                                <span><i class="fa-brands fa-x-twitter"></i></span>
-                                </a>
-                                @endif @if($red->name == 'Telegram')
-                                <a class="icon telegram" href="https://t.me/{{$red->username}}" target="_BLANK" aria-label="Telegram">
-                                <span class="tooltip">Telegram</span>
-                                <span><i class="fab fa-telegram"></i></span>
-                                </a>
-                                @endif @if($red->name == 'Pinterest')
-                                <a class="icon pinterest" href="https://www.pinterest.com/{{$red->username}}" target="_BLANK" aria-label="Pinterest">
-                                <span class="tooltip">Pinterest</span>
-                                <span><i class="fab fa-pinterest"></i></span>
-                                </a>
-                                @endif @if($red->name == 'Instagram')
-                                <a class="icon instagram" href="https://www.instagram.com/{{$red->username}}" target="_BLANK" aria-label="Instagram">
-                                <span class="tooltip">Instagram</span>
-                                <span><i class="fab fa-instagram"></i></span>
-                                </a>
-                                @endif @if($red->name == 'Linkedin')
-                                <a class="icon linkedin" href="https://www.linkedin.com/in/{{$red->username}}" target="_BLANK" aria-label="Linkedin">
-                                <span class="tooltip">Linkedin</span>
-                                <span><i class="fab fa-linkedin-in"></i></span>
-                                </a>
-                                @endif @if($red->name == 'YouTube')
-                                <a class="icon youtube" href="https://youtube.com/{{$red->username}}" target="_BLANK" aria-label="Youtube">
-                                <span class="tooltip">YouTube</span>
-                                <span><i class="fab fa-youtube"></i></span>
-                                </a>
-                                @endif  @if($red->name == 'GitHub')
-                                <a class="icon github" href="hhttps://github.com/{{$red->username}}" target="_BLANK" aria-label="GitHub">
-                                <span class="tooltip">YouTube</span>
-                                <span><i class="fa-brands fa-github"></i></span>
-                                </a>
-                                @endif
+                               
                                 @endforeach
                             </div>
                             <div class="text-center mt-5">

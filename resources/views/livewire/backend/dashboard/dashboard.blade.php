@@ -21,7 +21,7 @@
                                 <div class="card-body text-center py-4">
                                     <i class="bi bi-file-post" style="font-size: 2rem; color: white;"></i>
                                     <h3 class="mb-1">{{ $postsCount }}</h3>
-                                    <p class="mb-0 font-weight-light text-white">Publicaciones Totales</p>
+                                    <p class="mb-0 font-weight-light text-white small">Publicaciones</p>
                                 </div>
                             </div>
                         </div>
@@ -30,7 +30,7 @@
                                 <div class="card-body text-center py-4">
                                     <i class="bi bi-chat-text-fill" style="font-size: 2rem; color: white;"></i>
                                     <h3 class="mb-1">{{ $commentsCount }}</h3>
-                                    <p class="mb-0 font-weight-light text-white">Comentarios</p>
+                                    <p class="mb-0 font-weight-light text-white small">Comentarios</p>
                                 </div>
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                                 <div class="card-body text-center py-4">
                                     <i class="bi bi-eye" style="font-size: 2rem; color: white;"></i>
                                     <h3 class="mb-1">{{ $viewsCount }}</h3>
-                                    <p class="mb-0 font-weight-light text-white">Visitas</p>
+                                    <p class="mb-0 font-weight-light text-white small">Visitas</p>
                                 </div>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                                 <div class="card-body text-center py-4">
                                     <i class="bi bi-heart-fill" style="font-size: 2rem; color: white;"></i>
                                     <h3 class="mb-1">{{ $likesCount }}</h3>
-                                    <p class="mb-0 font-weight-light text-white">Me gusta</p>
+                                    <p class="mb-0 font-weight-light text-white small">Me gusta</p>
                                 </div>
                             </div>
                         </div>
