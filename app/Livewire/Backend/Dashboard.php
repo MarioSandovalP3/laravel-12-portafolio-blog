@@ -49,6 +49,9 @@ class Dashboard extends Component
         $dates = [];
         $postsData = [];
         $commentsData = [];
+        $viewsData = [];
+        $likesData = [];
+        
         for ($i = 30; $i >= 0; $i--) {
             $date = Carbon::now()->subDays($i);
             $dates[] = $date->format('M d');
@@ -56,23 +59,32 @@ class Dashboard extends Component
             $postsData[] = Post::whereDate('created_at', $date)
                 ->where('publication_status', 'Publicado')
                 ->count();
+                
             $commentsData[] = PostComment::whereDate('created_at', $date)->count();
+            
+            // Sumar vistas y likes por día
+            $dailyStats = Post::whereDate('created_at', '<=', $date)
+                ->selectRaw('SUM(views_count) as views, SUM(likes_count) as likes')
+                ->first();
+                
+            $viewsData[] = $dailyStats->views ?? 0;
+            $likesData[] = $dailyStats->likes ?? 0;
         }
 
-        // Datos para gráfico de posts populares (top 5)
-        $popularPosts = Post::withCount(['PostComment' => function($query) {
-                $query->where('status', 'approved');
-            }])
-            ->where('publication_status', 'Publicado')
-            ->orderBy('post_comment_count', 'desc')
+        // Datos para gráfico de posts populares (top 5 por vistas)
+        $popularPosts = Post::where('publication_status', 'Publicado')
+            ->orderBy('views_count', 'desc')
             ->take(5)
             ->get();
 
         $this->dates = $dates;
         $this->postsData = $postsData;
-        $this->commentsData = $commentsData; 
+        $this->commentsData = $commentsData;
+        $this->viewsData = $viewsData;
+        $this->likesData = $likesData;
         $this->popularPostsTitles = $popularPosts->pluck('title')->toArray();
-        $this->popularPostsComments = $popularPosts->pluck('post_comment_count')->toArray();
+        $this->popularPostsViews = $popularPosts->pluck('views_count')->toArray();
+        
     }
 
     public function render()

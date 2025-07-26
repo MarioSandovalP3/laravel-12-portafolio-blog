@@ -112,9 +112,15 @@
     </div>
 </div>
 
-@push('scripts')
+
 <script src="{{ asset('panel/plugins/apex/apexcharts.min.js') }}"></script>
 <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Esperar a que Livewire termine de cargar
+    setTimeout(initCharts, 100);
+});
+
+function initCharts() {
     // Gráfico de actividad del blog
     var blogActivityOptions = {
         chart: {
@@ -127,12 +133,13 @@
                 enabled: true
             }
         },
-        colors: ['#4e73df', '#1cc88a'],
+        colors: ['#4e73df', '#1cc88a', '#f6c23e', '#e74a3b'],
         dataLabels: {
             enabled: false
         },
         stroke: {
-            curve: 'smooth'
+            curve: 'smooth',
+            width: 2
         },
         series: [{
             name: 'Posts',
@@ -140,6 +147,12 @@
         }, {
             name: 'Comentarios',
             data: @json($commentsData ?? [])
+        }, {
+            name: 'Visitas',
+            data: @json($viewsData ?? [])
+        }, {
+            name: 'Likes',
+            data: @json($likesData ?? [])
         }],
         xaxis: {
             categories: @json($dates ?? []),
@@ -165,14 +178,14 @@
         }
     };
 
-    var blogActivityChart = new ApexCharts(
-        document.querySelector("#blogActivityChart"),
-        blogActivityOptions
-    );
-    blogActivityChart.render();
+        var blogActivityChart = new ApexCharts(
+            document.querySelector("#blogActivityChart"),
+            blogActivityOptions
+        );
+        blogActivityChart.render();
 
-    // Gráfico de posts populares
-    var popularPostsOptions = {
+        // Gráfico de posts populares
+        var popularPostsOptions = {
         chart: {
             type: 'bar',
             height: '100%',
@@ -180,19 +193,27 @@
                 show: true
             }
         },
-        colors: ['#36b9cc'],
+        colors: ['#36b9cc', '#1cc88a'],
         plotOptions: {
             bar: {
                 borderRadius: 4,
                 horizontal: true,
+                columnWidth: '70%',
+                distributed: true
             }
         },
         dataLabels: {
-            enabled: false
+            enabled: true,
+            formatter: function(val) {
+                return val;
+            },
+            style: {
+                colors: ['#fff']
+            }
         },
         series: [{
-            name: 'Comentarios',
-            data: @json($popularPostsComments ?? [])
+            name: 'Visitas',
+            data: @json($popularPostsViews ?? [])
         }],
         xaxis: {
             categories: @json($popularPostsTitles ?? []),
@@ -218,10 +239,10 @@
         }
     };
 
-    var popularPostsChart = new ApexCharts(
-        document.querySelector("#popularPostsChart"),
-        popularPostsOptions
-    );
-    popularPostsChart.render();
+        var popularPostsChart = new ApexCharts(
+            document.querySelector("#popularPostsChart"),
+            popularPostsOptions
+        );
+        popularPostsChart.render();
+    }
 </script>
-@endpush
