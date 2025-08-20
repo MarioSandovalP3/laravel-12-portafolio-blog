@@ -289,5 +289,6 @@ Este proyecto está licenciado bajo la [Licencia MIT](https://opensource.org/lic
 
 Si este proyecto te fue útil, puedes apoyarme con una donación:
 
-[💖 Donar por PayPal](https://paypal.me/linkvems?country.x=VE&locale.x=es_XC)
-[ ☕ Donar por Ko-fi]([![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T71IEJZ2))
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/T6T71IEJZ2)
+
+[![PayPal](https://img.shields.io/badge/PayPal-Donar-00457C?logo=paypal&logoColor=white)](https://paypal.me/linkvems)
